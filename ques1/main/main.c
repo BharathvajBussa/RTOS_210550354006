@@ -53,10 +53,11 @@ void task5(void *data)
     {
         printf("\nIn Task 5");
         xQueueReceive(msg,&buff,0);
-        printf("\ndata received from task4: %d",buff);
+        printf("\ndata received from Task4: %d",buff);
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
+
 void app_main(void)
 {
     msg=xQueueCreate(5,sizeof(int));

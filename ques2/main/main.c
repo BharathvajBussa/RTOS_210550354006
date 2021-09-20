@@ -10,7 +10,7 @@ TaskHandle_t t3_handle;
 TimerHandle_t timer_handle;
 
 void *const timer_id;
-
+void call_back(TimerHandle_t xTimer);
 void task1(void *data)
 {
     while(1)
@@ -27,17 +27,17 @@ void task2(void *data)
         vTaskDelay(2000 / portTICK_PERIOD_MS);
     }
 }
-void task3(void *params)
+void task3(void *data)
 {
-    timer_handle = xTimerCreate("timer",(10000 / portTICK_PERIOD_MS),pdFALSE,timer_id, callback);
-    xTimerStart(my_timer_handle, 1);
+    timer_handle = xTimerCreate("timer",(10000 / portTICK_PERIOD_MS),pdFALSE,timer_id,call_back);
+    xTimerStart(timer_handle, 1);
     while (1)
     {
         printf("\n In Task 3");
         vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
 }
-void callback(TimerHandle_t xTimer)
+void call_back(TimerHandle_t xTimer)
 {
     printf("\nIn Callback Function");
 }

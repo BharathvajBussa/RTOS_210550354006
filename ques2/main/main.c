@@ -33,7 +33,7 @@ void task3(void *data)
     xTimerStart(timer_handle, 1);
     while (1)
     {
-        printf("\n In Task 3");
+        printf("\nIn Task 3");
         vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
 }
